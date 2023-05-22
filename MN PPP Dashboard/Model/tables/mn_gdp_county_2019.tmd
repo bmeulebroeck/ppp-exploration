@@ -1,0 +1,50 @@
+table mn_gdp_county_2019
+	lineageTag: ac5e8b7d-5aa9-4040-962a-3a2258762973
+	ordinal: 10
+
+	partition 'mn_gdp_county_2019-8d1ab223-bf6c-41d8-bb40-d5a2fa6f1f27' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Csv.Document(File.Contents("C:\Users\hasse\Desktop\Data Sets\PPP FOIA\PPP Project\resources\mn_gdp_county_2019.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", Int64.Type}}),
+			    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+			    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"County", type text}, {"2019", Int64.Type}}),
+			    #"Added Custom" = Table.AddColumn(#"Changed Type1", "2019_Total", each [2019] * 1000),
+			    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom",{{"2019_Total", Int64.Type}}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"2019", "2019 (000s)"}}),
+			    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","St. Louis","Saint Louis",Replacer.ReplaceText,{"County"})
+			in
+			    #"Replaced Value"
+
+	column County
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c773658f-2214-4edc-84ee-78de69d577de
+		sourceColumn: County
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2019 (000s)'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: ee200127-8a7b-4d4e-bf8a-ac3462466efd
+		sourceColumn: "2019 (000s)"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 2019_Total
+		dataType: Int64
+		formatString:= \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		isDataTypeInferred: false
+		lineageTag: 301d2278-c49b-4464-8f17-94723e203551
+		sourceColumn: 2019_Total
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+

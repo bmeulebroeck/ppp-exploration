@@ -1,0 +1,223 @@
+{
+  "name": "a8d87b5d72a2a104b240",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 9.9294781382228479,
+        "y": 69.506346967559935,
+        "z": 0,
+        "width": 1270.070521861777,
+        "height": 415.23272214386458,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "LenderInfo.ServicingLenderName"
+        },
+        {
+          "queryRef": "LenderInfo.OriginatingLender"
+        },
+        {
+          "queryRef": "Sum(LenderInfo.CurrentApprovalAmount)"
+        },
+        {
+          "queryRef": "LenderInfo.BorrowerName"
+        },
+        {
+          "queryRef": "LenderInfo.BorrowerAddress"
+        },
+        {
+          "queryRef": "All MN PPP Loans.ProjectCity"
+        },
+        {
+          "queryRef": "All MN PPP Loans.ProjectCountyName"
+        },
+        {
+          "queryRef": "2017_6-digit_industries (2).2017 NAICS Title"
+        },
+        {
+          "queryRef": "2017_6-digit_industries (2).2017 NAICS Code (groups)"
+        },
+        {
+          "queryRef": "LenderInfo.LoanStatus"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "2",
+          "Entity": "2017_6-digit_industries (2)",
+          "Type": 0
+        },
+        {
+          "Name": "l",
+          "Entity": "LenderInfo",
+          "Type": 0
+        },
+        {
+          "Name": "a",
+          "Entity": "All MN PPP Loans",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "l"
+              }
+            },
+            "Property": "ServicingLenderName"
+          },
+          "Name": "LenderInfo.ServicingLenderName"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "l"
+                  }
+                },
+                "Property": "CurrentApprovalAmount"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(LenderInfo.CurrentApprovalAmount)"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "l"
+              }
+            },
+            "Property": "BorrowerName"
+          },
+          "Name": "LenderInfo.BorrowerName"
+        },
+        {
+          "GroupRef": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "2"
+              }
+            },
+            "Property": "2017 NAICS Code (groups)",
+            "GroupedColumns": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "2"
+                    }
+                  },
+                  "Property": "2017 NAICS Code"
+                }
+              }
+            ]
+          },
+          "Name": "2017_6-digit_industries (2).2017 NAICS Code (groups)"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "ProjectCity"
+          },
+          "Name": "All MN PPP Loans.ProjectCity"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "ProjectCountyName"
+          },
+          "Name": "All MN PPP Loans.ProjectCountyName"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "l"
+              }
+            },
+            "Property": "BorrowerAddress"
+          },
+          "Name": "LenderInfo.BorrowerAddress"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "l"
+              }
+            },
+            "Property": "OriginatingLender"
+          },
+          "Name": "LenderInfo.OriginatingLender"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "2"
+              }
+            },
+            "Property": "2017 NAICS Title"
+          },
+          "Name": "2017_6-digit_industries (2).2017 NAICS Title"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "l"
+              }
+            },
+            "Property": "LoanStatus"
+          },
+          "Name": "LenderInfo.LoanStatus"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "l"
+                    }
+                  },
+                  "Property": "CurrentApprovalAmount"
+                }
+              },
+              "Function": 0
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

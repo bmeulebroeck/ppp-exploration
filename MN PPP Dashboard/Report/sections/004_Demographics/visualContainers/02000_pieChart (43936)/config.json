@@ -1,0 +1,98 @@
+{
+  "name": "439365ec3cb16431e2a4",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 471,
+        "y": 463,
+        "width": 381,
+        "height": 257,
+        "z": 2000,
+        "tabOrder": 2000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pieChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "DemographicStats.Gender",
+          "active": true
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "CountNonNull(All MN PPP Loans.LoanNumber)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "d",
+          "Entity": "DemographicStats",
+          "Type": 0
+        },
+        {
+          "Name": "a",
+          "Entity": "All MN PPP Loans",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "d"
+              }
+            },
+            "Property": "Gender"
+          },
+          "Name": "DemographicStats.Gender"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "a"
+                  }
+                },
+                "Property": "LoanNumber"
+              }
+            },
+            "Function": 5
+          },
+          "Name": "CountNonNull(All MN PPP Loans.LoanNumber)"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "a"
+                    }
+                  },
+                  "Property": "LoanNumber"
+                }
+              },
+              "Function": 5
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

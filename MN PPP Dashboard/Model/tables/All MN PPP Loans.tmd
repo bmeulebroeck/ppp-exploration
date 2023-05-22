@@ -1,0 +1,205 @@
+table 'All MN PPP Loans'
+	lineageTag: f75b8317-206e-4a94-bb2e-b5e315d436c3
+	ordinal: 2
+
+	partition 'All MN PPP Loans-25364aee-dbeb-4043-a395-0e9bfbbc2f2c' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Table.Combine({over150k_mn, upto150k_mn}),
+			    #"Removed Columns" = Table.RemoveColumns(Source,{"SBAOfficeCode", "ProcessingMethod", "BorrowerName", "BorrowerAddress", "BorrowerCity", "BorrowerState", "BorrowerZip", "ServicingLenderLocationID", "ServicingLenderName", "ServicingLenderAddress", "ServicingLenderCity", "ServicingLenderState", "ServicingLenderZip", "OriginatingLenderLocationID", "OriginatingLender", "OriginatingLenderCity", "OriginatingLenderState", "UTILITIES_PROCEED", "PAYROLL_PROCEED", "MORTGAGE_INTEREST_PROCEED", "RENT_PROCEED", "REFINANCE_EIDL_PROCEED", "HEALTH_CARE_PROCEED", "DEBT_INTEREST_PROCEED", "SBAGuarantyPercentage", "RuralUrbanIndicator", "HubzoneIndicator", "LMIIndicator", "Race", "Ethnicity", "BusinessType", "Gender", "Veteran", "NonProfit", "CD", "JobsReported", "BusinessAgeDescription", "Term"}),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"LoanNumber", type text}, {"NAICSCode", type text}}),
+			    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type", "ProjectZip", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"ProjectZip.1", "ProjectZip.2"}),
+			    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"ProjectZip.1", Int64.Type}, {"ProjectZip.2", Int64.Type}}),
+			    #"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"ProjectZip.1", type text}}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"ProjectZip.1", "ZipCode"}, {"ProjectZip.2", "Zip+"}}),
+			    #"Changed Type3" = Table.TransformColumnTypes(#"Renamed Columns",{{"Zip+", type text}}),
+			    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type3", "Merged", each Text.Combine({[ProjectCountyName], ", ", [ProjectState]}), type text),
+			    #"Renamed Columns1" = Table.RenameColumns(#"Inserted Merged Column",{{"Merged", "CountyState"}}),
+			    #"Capitalized Each Word" = Table.TransformColumns(#"Renamed Columns1",{{"ProjectCountyName", Text.Proper, type text}}),
+			    #"Split Column by Position" = Table.SplitColumn(#"Capitalized Each Word", "ZipCode", Splitter.SplitTextByPositions({0, 5}, false), {"ZipCode.1", "ZipCode.2"}),
+			    #"Changed Type4" = Table.TransformColumnTypes(#"Split Column by Position",{{"ZipCode.1", Int64.Type}, {"ZipCode.2", type text}}),
+			    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type4",{"ZipCode.2"}),
+			    #"Changed Type5" = Table.TransformColumnTypes(#"Removed Columns1",{{"ZipCode.1", type text}}),
+			    #"Renamed Columns2" = Table.RenameColumns(#"Changed Type5",{{"ZipCode.1", "ZipCode"}})
+			in
+			    #"Renamed Columns2"
+
+	column LoanNumber
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 6719a4ca-899f-4f8b-bb2d-66b33b8c4387
+		sourceColumn: LoanNumber
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateApproved
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 8d1dce3a-c653-4612-8a59-c8c95a8007bd
+		sourceColumn: DateApproved
+		summarizeBy: None
+
+		variation Variation
+			defaultHierarchy: 'LocalDateTable_91096cb5-7581-4cfc-85a1-e7cba0b97fee'.'Date Hierarchy'
+			isDefault
+			relationship: '19a28d15-44a9-437f-bc99-b0514acd55b8'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LoanStatusDate
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 63ac613d-a54c-49b1-8e37-93e8962e0f01
+		sourceColumn: LoanStatusDate
+		summarizeBy: None
+
+		variation Variation
+			defaultHierarchy: 'LocalDateTable_228dc15e-67c8-4cc4-a885-ce15d5ce24af'.'Date Hierarchy'
+			isDefault
+			relationship: 'f600e5bb-b215-4d3d-800c-6c78ae63a21f'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LoanStatus
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9ba4028e-3c46-4c73-a6e6-dd49027f153c
+		sourceColumn: LoanStatus
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column InitialApprovalAmount
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 3eb5fbe1-9a62-4db3-8bc3-9d4409d49700
+		sourceColumn: InitialApprovalAmount
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CurrentApprovalAmount
+		dataType: Double
+		formatString:= \$#,0.00;(\$#,0.00);\$#,0.00
+		isDataTypeInferred: false
+		lineageTag: f426721d-1921-4f2c-90ad-07d2d177d826
+		sourceColumn: CurrentApprovalAmount
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column UndisbursedAmount
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: dd8afe01-2e5c-4f51-81b3-386425122721
+		sourceColumn: UndisbursedAmount
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FranchiseName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 374ae8d8-c524-40ea-bdea-baf090f8dd20
+		sourceColumn: FranchiseName
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectCity
+		dataCategory: City
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2e61827a-540e-43da-8dda-b108fe50ec97
+		sourceColumn: ProjectCity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectCountyName
+		dataCategory: County
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e5bfeb76-f4d1-4eaa-b54a-f8dd74bae9f8
+		sourceColumn: ProjectCountyName
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectState
+		dataCategory: StateOrProvince
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fd696fa7-1cd5-45b5-9981-0889e6c83988
+		sourceColumn: ProjectState
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAICSCode
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3b136026-317b-44c4-8969-6c77609708a7
+		sourceColumn: NAICSCode
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zip+'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d1a91e19-1764-4581-a9e2-e1198183ca94
+		sourceColumn: Zip+
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountyState
+		dataCategory: County
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 210ac670-59da-4b2b-95d3-628a473bfa99
+		sourceColumn: CountyState
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZipCode
+		dataCategory: PostalCode
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b8531ad0-c905-4b46-a1d8-567177771f55
+		sourceColumn: ZipCode
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'ProjectState Hierarchy'
+		lineageTag: 95981339-bad4-40b9-86c5-a8fbcd64038e
+
+		level ProjectState
+			column: ProjectState
+			lineageTag: 47709c5b-deb0-4815-830b-76ff2fbea59b
+
+		level ProjectCountyName
+			column: ProjectCountyName
+			lineageTag: 9321cf58-fd92-4e7a-b873-eac9ac4f8cc7
+
+		level ProjectCity
+			column: ProjectCity
+			lineageTag: 74b26e7a-e882-4d3d-972b-a03018dcba48
+
+	annotation PBI_ResultType = Table
+

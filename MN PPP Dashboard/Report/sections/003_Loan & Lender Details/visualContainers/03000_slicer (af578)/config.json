@@ -1,0 +1,71 @@
+{
+  "name": "af5783a684d7b7c003a9",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 515.43018335684053,
+        "y": 0,
+        "z": 3000,
+        "width": 306.91114245416077,
+        "height": 69.506346967559935,
+        "tabOrder": 3000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "slicer",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "All MN PPP Loans.ProjectCountyName",
+          "active": true
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "a",
+          "Entity": "All MN PPP Loans",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "ProjectCountyName"
+          },
+          "Name": "All MN PPP Loans.ProjectCountyName"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "name": "e701b3d817bf90d826b8",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 477.72384937238496,
+        "y": 267.78242677824267,
+        "z": 12000,
+        "width": 786.20920502092054,
+        "height": 207.79916317991632,
+        "tabOrder": 8000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "barChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "2017_6-digit_industries (2).2017 NAICS Code (groups)",
+          "active": true
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "Sum(All MN PPP Loans.CurrentApprovalAmount)"
+        }
+      ],
+      "Tooltips": [
+        {
+          "queryRef": "Min(All MN PPP Loans.LoanNumber)"
+        },
+        {
+          "queryRef": "Sum(DemographicStats.JobsReported)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "2",
+          "Entity": "2017_6-digit_industries (2)",
+          "Type": 0
+        },
+        {
+          "Name": "a",
+          "Entity": "All MN PPP Loans",
+          "Type": 0
+        },
+        {
+          "Name": "d",
+          "Entity": "DemographicStats",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "GroupRef": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "2"
+              }
+            },
+            "Property": "2017 NAICS Code (groups)",
+            "GroupedColumns": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "2"
+                    }
+                  },
+                  "Property": "2017 NAICS Code"
+                }
+              }
+            ]
+          },
+          "Name": "2017_6-digit_industries (2).2017 NAICS Code (groups)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "a"
+                  }
+                },
+                "Property": "CurrentApprovalAmount"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(All MN PPP Loans.CurrentApprovalAmount)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "a"
+                  }
+                },
+                "Property": "LoanNumber"
+              }
+            },
+            "Function": 5
+          },
+          "Name": "Min(All MN PPP Loans.LoanNumber)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "d"
+                  }
+                },
+                "Property": "JobsReported"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(DemographicStats.JobsReported)"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "a"
+                    }
+                  },
+                  "Property": "CurrentApprovalAmount"
+                }
+              },
+              "Function": 0
+            }
+          }
+        }
+      ]
+    },
+    "columnProperties": {
+      "Min(All MN PPP Loans.LoanNumber)": {
+        "displayName": "Number of loans"
+      },
+      "Sum(All MN PPP Loans.CurrentApprovalAmount)": {
+        "displayName": "Total dollars issued"
+      },
+      "2017_6-digit_industries (2).2017 NAICS Code (groups)": {
+        "displayName": "NAICS Code"
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true,
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "maxMarginFactor": {
+              "expr": {
+                "Literal": {
+                  "Value": "40L"
+                }
+              }
+            },
+            "concatenateLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Industries Impacted'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "null"
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

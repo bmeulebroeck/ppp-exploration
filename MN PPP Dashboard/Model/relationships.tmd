@@ -1,0 +1,46 @@
+relationship '19a28d15-44a9-437f-bc99-b0514acd55b8'
+	fromColumn: 'All MN PPP Loans'.DateApproved
+	joinOnDateBehavior: DatePartOnly
+	toColumn: 'LocalDateTable_91096cb5-7581-4cfc-85a1-e7cba0b97fee'.Date
+
+relationship 'f600e5bb-b215-4d3d-800c-6c78ae63a21f'
+	fromColumn: 'All MN PPP Loans'.LoanStatusDate
+	joinOnDateBehavior: DatePartOnly
+	toColumn: 'LocalDateTable_228dc15e-67c8-4cc4-a885-ce15d5ce24af'.Date
+
+relationship '1ba019b0-5070-42ad-a017-d824685e9f35'
+	fromColumn: LoanUsedFor.LoanNumber
+	toColumn: 'All MN PPP Loans'.LoanNumber
+
+relationship '03eebbff-bd50-4627-a3f7-7b08106b66e0'
+	crossFilteringBehavior: BothDirections
+	fromCardinality: One
+	fromColumn: DemographicStats.LoanNumber
+	toColumn: 'All MN PPP Loans'.LoanNumber
+
+relationship 'abb8854e-81d4-4344-8878-2d09b0367670'
+	fromColumn: 'All MN PPP Loans'.NAICSCode
+	toColumn: '2017_6-digit_industries (2)'.'2017 NAICS Code'
+
+relationship 'a13fccc5-2fa8-4aae-8538-059772fede6c'
+	crossFilteringBehavior: BothDirections
+	fromColumn: 'All MN PPP Loans'.ProjectCountyName
+	toColumn: mn_county_pop_acs20.County
+
+relationship '1c7a7e3f-5a2d-4b15-be97-40b1eb9a5d0d'
+	crossFilteringBehavior: BothDirections
+	fromCardinality: One
+	fromColumn: mn_gdp_county_2019.County
+	toColumn: mn_county_pop_acs20.County
+
+relationship 'f1970521-6c35-4917-b21d-36aa72d3aacd'
+	fromColumn: LenderInfo.DateApproved
+	joinOnDateBehavior: DatePartOnly
+	toColumn: 'LocalDateTable_774085ee-426d-4759-9987-9aa891ce6746'.Date
+
+relationship '2b6964cf-411a-4d07-b8fa-965244692720'
+	crossFilteringBehavior: BothDirections
+	fromCardinality: One
+	fromColumn: LenderInfo.LoanNumber
+	toColumn: 'All MN PPP Loans'.LoanNumber
+

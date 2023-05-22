@@ -1,0 +1,49 @@
+table LoanUsedFor
+	lineageTag: 23e7e1ae-4e0c-41f8-ab86-66e60bb17bc7
+	ordinal: 5
+
+	partition 'LoanUsedFor-259e966b-88d1-4f8e-a03a-057c7224446b' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Table.Combine({over150k_mn, upto150k_mn}),
+			    #"Removed Columns" = Table.RemoveColumns(Source,{"SBAOfficeCode", "ProcessingMethod", "BorrowerName", "BorrowerAddress", "BorrowerCity", "BorrowerState", "BorrowerZip", "ServicingLenderLocationID", "ServicingLenderName", "ServicingLenderAddress", "ServicingLenderCity", "ServicingLenderState", "ServicingLenderZip", "OriginatingLenderLocationID", "OriginatingLender", "OriginatingLenderCity", "OriginatingLenderState"}),
+			    #"Removed Other Columns" = Table.SelectColumns(#"Removed Columns",{"LoanNumber", "UTILITIES_PROCEED", "PAYROLL_PROCEED", "MORTGAGE_INTEREST_PROCEED", "RENT_PROCEED", "REFINANCE_EIDL_PROCEED", "HEALTH_CARE_PROCEED", "DEBT_INTEREST_PROCEED"}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"UTILITIES_PROCEED", "Utilities"}, {"PAYROLL_PROCEED", "Payroll"}, {"MORTGAGE_INTEREST_PROCEED", "Mortgage Interest"}, {"RENT_PROCEED", "Rent"}, {"REFINANCE_EIDL_PROCEED", "Refinance EIDL"}, {"HEALTH_CARE_PROCEED", "Health Care"}, {"DEBT_INTEREST_PROCEED", "Debt Interest"}}),
+			    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Renamed Columns", {"LoanNumber"}, "Attribute", "Value"),
+			    #"Renamed Columns1" = Table.RenameColumns(#"Unpivoted Columns",{{"Attribute", "Used For"}, {"Value", "Amount"}}),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns1",{{"Amount", type number}, {"LoanNumber", type text}})
+			in
+			    #"Changed Type"
+
+	column LoanNumber
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c8d2aced-1c2b-4b9a-91ba-d5e8db1ee10e
+		sourceColumn: LoanNumber
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Used For'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: aae4faeb-a321-45ef-b0ce-e37f64e2722e
+		sourceColumn: "Used For"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: c8411ff1-48ee-42c1-ba0e-61aae1325d33
+		sourceColumn: Amount
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	annotation PBI_ResultType = Table
+

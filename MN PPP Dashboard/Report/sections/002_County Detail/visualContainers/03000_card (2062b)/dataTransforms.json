@@ -1,0 +1,52 @@
+{
+  "projectionOrdering": {
+    "Values": [
+      0
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Loan$ as % of 2019 GDP",
+        "Name": "Key Measures.Loan$ as % of 2019 GDP",
+        "Type": 1,
+        "Format": "0.00%;-0.00%;0.00%"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Loan$ as % of 2019 GDP",
+      "format": "0.00%;-0.00%;0.00%",
+      "queryName": "Key Measures.Loan$ as % of 2019 GDP",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Key Measures"
+            }
+          },
+          "Property": "Loan$ as % of 2019 GDP"
+        }
+      }
+    }
+  ]
+}

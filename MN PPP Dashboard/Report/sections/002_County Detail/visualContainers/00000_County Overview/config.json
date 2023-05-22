@@ -1,0 +1,377 @@
+{
+  "name": "d632cc5f48bb192b24f0",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 68.6036671368124,
+        "y": 100.19746121297601,
+        "z": 0,
+        "width": 1194.2454160789844,
+        "height": 92.073342736248236,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "mn_county_pop_acs20.County"
+        },
+        {
+          "queryRef": "Key Measures.Total $ per County"
+        },
+        {
+          "queryRef": "All MN PPP Loans.LoanNumber"
+        },
+        {
+          "queryRef": "Key Measures.Avg Loan Amount"
+        },
+        {
+          "queryRef": "mn_county_pop_acs20.Population"
+        },
+        {
+          "queryRef": "Key Measures.$ per Capita"
+        },
+        {
+          "queryRef": "Sum(DemographicStats.JobsReported)"
+        },
+        {
+          "queryRef": "Key Measures.$ per job"
+        },
+        {
+          "queryRef": "Sum(mn_gdp_county_2019.2019_Total)"
+        },
+        {
+          "queryRef": "Key Measures.Loan$ as % of 2019 GDP"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "k",
+          "Entity": "Key Measures",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "mn_county_pop_acs20",
+          "Type": 0
+        },
+        {
+          "Name": "d",
+          "Entity": "DemographicStats",
+          "Type": 0
+        },
+        {
+          "Name": "m1",
+          "Entity": "mn_gdp_county_2019",
+          "Type": 0
+        },
+        {
+          "Name": "a",
+          "Entity": "All MN PPP Loans",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "Total $ per County"
+          },
+          "Name": "Key Measures.Total $ per County"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "$ per Capita"
+          },
+          "Name": "Key Measures.$ per Capita"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Population"
+          },
+          "Name": "mn_county_pop_acs20.Population"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "d"
+                  }
+                },
+                "Property": "JobsReported"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(DemographicStats.JobsReported)"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "$ per job"
+          },
+          "Name": "Key Measures.$ per job"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "County"
+          },
+          "Name": "mn_county_pop_acs20.County"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m1"
+                  }
+                },
+                "Property": "2019_Total"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(mn_gdp_county_2019.2019_Total)"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "Loan$ as % of 2019 GDP"
+          },
+          "Name": "Key Measures.Loan$ as % of 2019 GDP"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "a"
+                  }
+                },
+                "Property": "LoanNumber"
+              }
+            },
+            "Function": 5
+          },
+          "Name": "All MN PPP Loans.LoanNumber"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "Avg Loan Amount"
+          },
+          "Name": "Key Measures.Avg Loan Amount"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "k"
+                }
+              },
+              "Property": "Total $ per County"
+            }
+          }
+        }
+      ]
+    },
+    "columnProperties": {
+      "Sum(mn_gdp_county_2019.2019_Total)": {
+        "displayName": "2019 GDP"
+      },
+      "All MN PPP Loans.LoanNumber": {
+        "displayName": "# of Loans"
+      },
+      "Key Measures.Total $ per County": {
+        "displayName": "Total Loan $"
+      },
+      "Sum(DemographicStats.JobsReported)": {
+        "displayName": "Jobs Impacted"
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Key Measures.Total $ per County"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'County Overview'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'None'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

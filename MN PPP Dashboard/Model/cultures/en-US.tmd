@@ -1,0 +1,33 @@
+culture 'en-US'
+	linguisticMetadata:
+		content:=
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "DynamicImprovement": "HighConfidence",
+			  "Entities": {
+			    "table2017_6digit_industries_2.column2017_naics_code_groups": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "2017_6-digit_industries (2)",
+			          "ConceptualProperty": "2017 NAICS Code (groups)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "NAICS Code": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: Json
+

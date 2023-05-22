@@ -1,0 +1,17 @@
+[
+  {
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "Key Measures"
+          }
+        },
+        "Property": "Loan $ % of 2019 GDP"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 1,
+    "isHiddenInViewMode": false
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "name": "Filter083da767bd9ff7e9885d",
+    "filter": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "l",
+          "Entity": "LoanUsedFor",
+          "Type": 0
+        }
+      ],
+      "Where": [
+        {
+          "Condition": {
+            "Not": {
+              "Expression": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "l"
+                          }
+                        },
+                        "Property": "Used For"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Payroll'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "type": "Exclude",
+    "howCreated": 4,
+    "filterExpressionMetadata": {
+      "expressions": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "LoanUsedFor"
+              }
+            },
+            "Property": "Used For"
+          }
+        }
+      ],
+      "cachedValueItems": [
+        {
+          "identities": [
+            {
+              "scopeId": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "LoanUsedFor"
+                        }
+                      },
+                      "Property": "Used For"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "'Payroll'"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "valueMap": [
+            "Payroll"
+          ]
+        }
+      ]
+    }
+  }
+]

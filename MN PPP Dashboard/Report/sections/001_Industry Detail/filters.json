@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Filter61e76be869c5b9099ce0",
+    "expression": {
+      "GroupRef": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "2017_6-digit_industries (2)"
+          }
+        },
+        "Property": "2017 NAICS Code (groups)",
+        "GroupedColumns": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "2017_6-digit_industries (2)"
+                }
+              },
+              "Property": "2017 NAICS Code"
+            }
+          }
+        ]
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 5,
+    "objects": {}
+  }
+]

@@ -1,0 +1,342 @@
+{
+  "objects": {
+    "tree": [
+      {
+        "properties": {
+          "density": {
+            "expr": {
+              "Literal": {
+                "Value": "'default'"
+              }
+            }
+          },
+          "barsPerLevel": {
+            "expr": {
+              "Literal": {
+                "Value": "4L"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "analysis": [
+      {
+        "properties": {
+          "aiMode": {
+            "expr": {
+              "Literal": {
+                "Value": "'absolute'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "dataBars": [
+      {
+        "properties": {
+          "dataBarWidthPercent": {
+            "expr": {
+              "Literal": {
+                "Value": "150L"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "categoryLabels": [
+      {
+        "properties": {
+          "categoryLabelFontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "9D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "levelHeader": [
+      {
+        "properties": {
+          "levelHeaderBackgroundColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F4F3F3'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "insights": [
+      {
+        "properties": {
+          "isAINode": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        },
+        "selector": {
+          "data": [
+            {
+              "scopeId": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2017_6-digit_industries (2)"
+                        }
+                      },
+                      "Property": "2017 NAICS Code (groups)"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "'Manufacturing'"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "scopeId": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "2017_6-digit_industries (2)"
+                        }
+                      },
+                      "Property": "2017 NAICS Title"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "'Commercial Printing (except Screen and Books)'"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Analyze": [
+      0
+    ],
+    "ExplainBy": [
+      1,
+      2
+    ]
+  },
+  "projectionActiveItems": {
+    "ExplainBy": [
+      {
+        "queryRef": "2017_6-digit_industries (2).2017 NAICS Code (groups)",
+        "suppressConcat": false
+      },
+      {
+        "queryRef": "2017_6-digit_industries (2).2017 NAICS Title",
+        "suppressConcat": false
+      }
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "CurrentApprovalAmount",
+        "Name": "Sum(All MN PPP Loans.CurrentApprovalAmount)",
+        "Type": 1,
+        "Format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+      },
+      {
+        "Restatement": "2017 NAICS Code (groups)",
+        "Name": "2017_6-digit_industries (2).2017 NAICS Code (groups)",
+        "Type": 2048
+      },
+      {
+        "Restatement": "2017 NAICS Title",
+        "Name": "2017_6-digit_industries (2).2017 NAICS Title",
+        "Type": 2048
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Analyze",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "ExplainBy",
+          "Projection": 1,
+          "isActive": true
+        },
+        {
+          "Name": "ExplainBy",
+          "Projection": 2,
+          "isActive": true
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "CurrentApprovalAmount",
+      "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+      "queryName": "Sum(All MN PPP Loans.CurrentApprovalAmount)",
+      "roles": {
+        "Analyze": true
+      },
+      "sort": 2,
+      "sortOrder": 0,
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Aggregation": {
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "All MN PPP Loans"
+                }
+              },
+              "Property": "CurrentApprovalAmount"
+            }
+          },
+          "Function": 0
+        }
+      }
+    },
+    {
+      "displayName": "2017 NAICS Code (groups)",
+      "queryName": "2017_6-digit_industries (2).2017 NAICS Code (groups)",
+      "roles": {
+        "ExplainBy": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "GroupRef": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "2017_6-digit_industries (2)"
+            }
+          },
+          "Property": "2017 NAICS Code (groups)",
+          "GroupedColumns": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "2017_6-digit_industries (2)"
+                  }
+                },
+                "Property": "2017 NAICS Code"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "displayName": "2017 NAICS Title",
+      "queryName": "2017_6-digit_industries (2).2017 NAICS Title",
+      "roles": {
+        "ExplainBy": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "2017_6-digit_industries (2)"
+            }
+          },
+          "Property": "2017 NAICS Title"
+        }
+      }
+    }
+  ],
+  "expansionStates": [
+    {
+      "roles": [
+        "ExplainBy"
+      ],
+      "levels": [
+        {
+          "queryRefs": [
+            "2017_6-digit_industries (2).2017 NAICS Code (groups)"
+          ],
+          "isCollapsed": true,
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "2017_6-digit_industries (2)"
+                  }
+                },
+                "Property": "2017 NAICS Code (groups)"
+              }
+            }
+          ],
+          "isPinned": true
+        },
+        {
+          "queryRefs": [
+            "2017_6-digit_industries (2).2017 NAICS Title"
+          ],
+          "isCollapsed": true,
+          "isPinned": true,
+          "AIInformation": {
+            "method": "MaxSplit",
+            "disabled": false
+          }
+        }
+      ],
+      "root": {
+        "identityValues": null,
+        "children": [
+          {
+            "identityValues": [
+              {
+                "Literal": {
+                  "Value": "'Manufacturing'"
+                }
+              }
+            ],
+            "isToggled": true
+          }
+        ]
+      }
+    }
+  ]
+}

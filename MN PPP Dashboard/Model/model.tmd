@@ -1,0 +1,15 @@
+model Model
+	compatibilityLevel: 1567
+	culture: en-US
+	dataAccessOptions:
+		legacyRedirects
+		returnErrorValuesAsNull
+	defaultPowerBIDataSourceVersion: PowerBI_V3
+	sourceQueryCulture: en-US
+
+annotation PBIDesktopVersion = 2.116.1145.0 (23.04)
+
+annotation PBI_QueryOrder = ["over150k_mn","upto150k_mn","All MN PPP Loans","LoanUsedFor","DemographicStats","2017_6-digit_industries (2)","mn_county_pop_acs20","Key Measures","mn_gdp_county_2019","LenderInfo"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+

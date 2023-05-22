@@ -1,0 +1,41 @@
+table mn_county_pop_acs20
+	lineageTag: cbd8b38b-b5a3-4328-915e-97c615ae38d2
+	ordinal: 8
+
+	partition 'mn_county_pop_acs20-4316c489-ddbf-4347-8c00-a0ba7ff5d109' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Csv.Document(File.Contents("C:\Users\hasse\Desktop\Data Sets\PPP FOIA\PPP Project\mn_county_pop_acs20.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"County", type text}, {"Population", Int64.Type}}),
+			    #"Split Column by Position" = Table.SplitColumn(#"Changed Type", "County", Splitter.SplitTextByPositions({0, 7}, true), {"County.1", "County.2"}),
+			    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Position",{{"County.1", type text}, {"County.2", type text}}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"County.2"}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"County.1", "County"}}),
+			    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","St.","Saint",Replacer.ReplaceText,{"County"})
+			in
+			    #"Replaced Value"
+
+	column County
+		dataCategory: County
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 82dcdf54-fd39-40bb-a293-3e14ff9c7390
+		sourceColumn: County
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Population
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: e28f1f0d-d3c5-4e10-ac26-1d577c7b78fc
+		sourceColumn: Population
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,158 @@
+{
+  "filters": {
+    "byExpr": [
+      {
+        "type": "Advanced",
+        "expression": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "All MN PPP Loans"
+                  }
+                },
+                "Property": "CurrentApprovalAmount"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "howCreated": 0
+      },
+      {
+        "type": "Categorical",
+        "expression": {
+          "GroupRef": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "2017_6-digit_industries (2)"
+              }
+            },
+            "Property": "2017 NAICS Code (groups)",
+            "GroupedColumns": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "2017_6-digit_industries (2)"
+                    }
+                  },
+                  "Property": "2017 NAICS Code"
+                }
+              }
+            ]
+          }
+        },
+        "howCreated": 0
+      },
+      {
+        "type": "Categorical",
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "2017_6-digit_industries (2)"
+              }
+            },
+            "Property": "2017 NAICS Title"
+          }
+        },
+        "howCreated": 0
+      }
+    ]
+  },
+  "singleVisual": {
+    "visualType": "decompositionTreeVisual",
+    "objects": {},
+    "activeProjections": {
+      "ExplainBy": [
+        {
+          "GroupRef": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "2017_6-digit_industries (2)"
+              }
+            },
+            "Property": "2017 NAICS Code (groups)",
+            "GroupedColumns": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "2017_6-digit_industries (2)"
+                    }
+                  },
+                  "Property": "2017 NAICS Code"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "2017_6-digit_industries (2)"
+              }
+            },
+            "Property": "2017 NAICS Title"
+          }
+        }
+      ]
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "ExplainBy"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "2017_6-digit_industries (2).2017 NAICS Code (groups)"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "2017_6-digit_industries (2)"
+                    }
+                  },
+                  "Property": "2017 NAICS Code (groups)"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "2017_6-digit_industries (2).2017 NAICS Title"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "identityValues": null,
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Other Services (except Public Administration)'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "display": {
+      "mode": "hidden"
+    }
+  }
+}

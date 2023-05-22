@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Filterf1673df87166b5514c85",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "mn_county_pop_acs20"
+          }
+        },
+        "Property": "County"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 5
+  },
+  {
+    "name": "Filter4aa6445ed9a15ee7e019",
+    "expression": {
+      "GroupRef": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "2017_6-digit_industries (2)"
+          }
+        },
+        "Property": "2017 NAICS Code (groups)",
+        "GroupedColumns": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "2017_6-digit_industries (2)"
+                }
+              },
+              "Property": "2017 NAICS Code"
+            }
+          }
+        ]
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 5
+  }
+]

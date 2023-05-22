@@ -1,0 +1,271 @@
+{
+  "name": "dad10443d26e94d9fd6a",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 452.54307374224675,
+        "y": 79.3935217091661,
+        "z": 8000,
+        "width": 802.75671950379046,
+        "height": 417.2570640937285,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "clusteredBarChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "2017_6-digit_industries (2).2017 NAICS Code (groups)",
+          "active": true
+        },
+        {
+          "queryRef": "2017_6-digit_industries (2).2017 NAICS Title"
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "Sum(All MN PPP Loans.CurrentApprovalAmount)"
+        }
+      ],
+      "Tooltips": [
+        {
+          "queryRef": "CountNonNull(All MN PPP Loans.LoanNumber)"
+        },
+        {
+          "queryRef": "Sum(DemographicStats.JobsReported)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "2",
+          "Entity": "2017_6-digit_industries (2)",
+          "Type": 0
+        },
+        {
+          "Name": "a",
+          "Entity": "All MN PPP Loans",
+          "Type": 0
+        },
+        {
+          "Name": "d",
+          "Entity": "DemographicStats",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "GroupRef": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "2"
+              }
+            },
+            "Property": "2017 NAICS Code (groups)",
+            "GroupedColumns": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "2"
+                    }
+                  },
+                  "Property": "2017 NAICS Code"
+                }
+              }
+            ]
+          },
+          "Name": "2017_6-digit_industries (2).2017 NAICS Code (groups)"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "2"
+              }
+            },
+            "Property": "2017 NAICS Title"
+          },
+          "Name": "2017_6-digit_industries (2).2017 NAICS Title"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "a"
+                  }
+                },
+                "Property": "CurrentApprovalAmount"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(All MN PPP Loans.CurrentApprovalAmount)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "a"
+                  }
+                },
+                "Property": "LoanNumber"
+              }
+            },
+            "Function": 5
+          },
+          "Name": "CountNonNull(All MN PPP Loans.LoanNumber)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "d"
+                  }
+                },
+                "Property": "JobsReported"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(DemographicStats.JobsReported)"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "a"
+                    }
+                  },
+                  "Property": "CurrentApprovalAmount"
+                }
+              },
+              "Function": 0
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true,
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "maxMarginFactor": {
+              "expr": {
+                "Literal": {
+                  "Value": "40L"
+                }
+              }
+            },
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "20L"
+                }
+              }
+            },
+            "concatenateLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "invertAxis": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Loan Dollars by Industry Code Title (NAICS)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+expression over150k_mn =
+	let
+	    Source = Csv.Document(File.Contents("C:\Users\hasse\Desktop\Data Sets\PPP FOIA\PPP Project\resources\over150k_mn.csv"),[Delimiter=",", Columns=51, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+	    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+	    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"LoanNumber", Int64.Type}, {"DateApproved", type date}, {"SBAOfficeCode", Int64.Type}, {"ProcessingMethod", type text}, {"BorrowerName", type text}, {"BorrowerAddress", type text}, {"BorrowerCity", type text}, {"BorrowerState", type text}, {"BorrowerZip", type text}, {"LoanStatusDate", type date}, {"LoanStatus", type text}, {"Term", Int64.Type}, {"SBAGuarantyPercentage", Int64.Type}, {"InitialApprovalAmount", type number}, {"CurrentApprovalAmount", type number}, {"UndisbursedAmount", Int64.Type}, {"FranchiseName", type text}, {"ServicingLenderLocationID", Int64.Type}, {"ServicingLenderName", type text}, {"ServicingLenderAddress", type text}, {"ServicingLenderCity", type text}, {"ServicingLenderState", type text}, {"ServicingLenderZip", type text}, {"RuralUrbanIndicator", type text}, {"HubzoneIndicator", type text}, {"LMIIndicator", type text}, {"BusinessAgeDescription", type text}, {"ProjectCity", type text}, {"ProjectCountyName", type text}, {"ProjectState", type text}, {"ProjectZip", type text}, {"CD", type text}, {"JobsReported", Int64.Type}, {"NAICSCode", Int64.Type}, {"Race", type text}, {"Ethnicity", type text}, {"UTILITIES_PROCEED", type number}, {"PAYROLL_PROCEED", type number}, {"MORTGAGE_INTEREST_PROCEED", Int64.Type}, {"RENT_PROCEED", Int64.Type}, {"REFINANCE_EIDL_PROCEED", Int64.Type}, {"HEALTH_CARE_PROCEED", Int64.Type}, {"DEBT_INTEREST_PROCEED", Int64.Type}, {"BusinessType", type text}, {"OriginatingLenderLocationID", Int64.Type}, {"OriginatingLender", type text}, {"OriginatingLenderCity", type text}, {"OriginatingLenderState", type text}, {"Gender", type text}, {"Veteran", type text}, {"NonProfit", type text}})
+	in
+	    #"Changed Type"
+	lineageTag: 32aa35bc-d8f3-468b-928b-1bcab910cfd9
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression upto150k_mn =
+	let
+	    Source = Csv.Document(File.Contents("C:\Users\hasse\Desktop\Data Sets\PPP FOIA\PPP Project\resources\upto150k_mn.csv"),[Delimiter=",", Columns=51, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+	    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+	    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"LoanNumber", Int64.Type}, {"DateApproved", type date}, {"SBAOfficeCode", Int64.Type}, {"ProcessingMethod", type text}, {"BorrowerName", type text}, {"BorrowerAddress", type text}, {"BorrowerCity", type text}, {"BorrowerState", type text}, {"BorrowerZip", type text}, {"LoanStatusDate", type date}, {"LoanStatus", type text}, {"Term", Int64.Type}, {"SBAGuarantyPercentage", Int64.Type}, {"InitialApprovalAmount", type number}, {"CurrentApprovalAmount", type number}, {"UndisbursedAmount", type number}, {"FranchiseName", type text}, {"ServicingLenderLocationID", Int64.Type}, {"ServicingLenderName", type text}, {"ServicingLenderAddress", type text}, {"ServicingLenderCity", type text}, {"ServicingLenderState", type text}, {"ServicingLenderZip", type text}, {"RuralUrbanIndicator", type text}, {"HubzoneIndicator", type text}, {"LMIIndicator", type text}, {"BusinessAgeDescription", type text}, {"ProjectCity", type text}, {"ProjectCountyName", type text}, {"ProjectState", type text}, {"ProjectZip", type text}, {"CD", type text}, {"JobsReported", Int64.Type}, {"NAICSCode", Int64.Type}, {"Race", type text}, {"Ethnicity", type text}, {"UTILITIES_PROCEED", type number}, {"PAYROLL_PROCEED", type number}, {"MORTGAGE_INTEREST_PROCEED", type number}, {"RENT_PROCEED", type number}, {"REFINANCE_EIDL_PROCEED", type text}, {"HEALTH_CARE_PROCEED", Int64.Type}, {"DEBT_INTEREST_PROCEED", Int64.Type}, {"BusinessType", type text}, {"OriginatingLenderLocationID", Int64.Type}, {"OriginatingLender", type text}, {"OriginatingLenderCity", type text}, {"OriginatingLenderState", type text}, {"Gender", type text}, {"Veteran", type text}, {"NonProfit", type text}})
+	in
+	    #"Changed Type"
+	lineageTag: ce4e6e88-a77c-4fd2-a5ee-aaa008023ce1
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Filter052a306dedb8b825733c",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "mn_county_pop_acs20"
+          }
+        },
+        "Property": "County"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 5
+  }
+]

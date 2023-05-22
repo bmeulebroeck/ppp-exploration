@@ -1,0 +1,143 @@
+table DemographicStats
+	lineageTag: 721c50ae-db54-430c-bbdb-8050aa144e4e
+	ordinal: 6
+
+	partition 'DemographicStats-3a35fcbe-f276-4ebc-82dd-b11e797ca41c' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Table.Combine({over150k_mn, upto150k_mn}),
+			    #"Removed Columns" = Table.RemoveColumns(Source,{"SBAOfficeCode", "ProcessingMethod", "BorrowerName", "BorrowerAddress", "BorrowerCity", "BorrowerState", "BorrowerZip", "ServicingLenderLocationID", "ServicingLenderName", "ServicingLenderAddress", "ServicingLenderCity", "ServicingLenderState", "ServicingLenderZip", "OriginatingLenderLocationID", "OriginatingLender", "OriginatingLenderCity", "OriginatingLenderState", "UTILITIES_PROCEED", "PAYROLL_PROCEED", "MORTGAGE_INTEREST_PROCEED", "RENT_PROCEED", "REFINANCE_EIDL_PROCEED", "HEALTH_CARE_PROCEED", "DEBT_INTEREST_PROCEED", "SBAGuarantyPercentage"}),
+			    #"Removed Other Columns" = Table.SelectColumns(#"Removed Columns",{"LoanNumber", "RuralUrbanIndicator", "HubzoneIndicator", "LMIIndicator", "BusinessAgeDescription", "CD", "JobsReported", "Race", "Ethnicity", "BusinessType", "Gender", "Veteran", "NonProfit"}),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Removed Other Columns",{{"LoanNumber", type text}})
+			in
+			    #"Changed Type"
+
+	column LoanNumber
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c76721e1-f0e5-41c9-89d3-c49f4a75cb59
+		sourceColumn: LoanNumber
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column RuralUrbanIndicator
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b6baa6d2-6579-429f-8343-44df7046e1a6
+		sourceColumn: RuralUrbanIndicator
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column HubzoneIndicator
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 6f9e672a-45f6-404c-8761-13b97537a75d
+		sourceColumn: HubzoneIndicator
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column LMIIndicator
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 60f5cd89-057d-4402-8e1a-6939e3e3682d
+		sourceColumn: LMIIndicator
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessAgeDescription
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 5d2b78a5-bd41-405c-be6b-e1a387d522b8
+		sourceColumn: BusinessAgeDescription
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column CD
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2671638a-68f4-4f7e-9ce8-a9dcfa43c93c
+		sourceColumn: CD
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobsReported
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 74a1f5c4-f82f-4d87-bec3-7ceb3c09692b
+		sourceColumn: JobsReported
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Race
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b5dcf7be-1892-465e-a2a1-62088638b8e9
+		sourceColumn: Race
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ethnicity
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: adfd84dc-bd00-4121-8ec8-ba2b695da9c3
+		sourceColumn: Ethnicity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessType
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e48b3aa4-bc41-4d9a-8c11-bb56b8359370
+		sourceColumn: BusinessType
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: a420f776-e809-43af-a734-28d72c53f0fb
+		sourceColumn: Gender
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Veteran
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2a0306c9-ee67-4676-8718-c00d1f4e5b42
+		sourceColumn: Veteran
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column NonProfit
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 09c7d925-cf11-40ce-8dec-224cf49aa99f
+		sourceColumn: NonProfit
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RU Num' = IF('DemographicStats'[RuralUrbanIndicator] = "U", 2, IF('DemographicStats'[RuralUrbanIndicator] = "R", 1))
+		dataType: Int64
+		formatString:= 0
+		lineageTag: 078b5866-4b83-4057-978f-4cab25fe8a1d
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+

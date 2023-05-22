@@ -1,0 +1,56 @@
+{
+  "relationships": [
+    {
+      "source": "9e2eea39c39fdeade016",
+      "target": "dad10443d26e94d9fd6a",
+      "type": 1
+    },
+    {
+      "source": "9e2eea39c39fdeade016",
+      "target": "d5b446fd93f448ef7cc4",
+      "type": 1
+    }
+  ],
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'bg_nav_simple.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "bg_nav_simple312069547876628.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

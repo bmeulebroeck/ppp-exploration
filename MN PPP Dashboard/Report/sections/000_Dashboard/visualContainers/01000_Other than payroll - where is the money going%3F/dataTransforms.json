@@ -1,0 +1,132 @@
+{
+  "objects": {
+    "labels": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "legend": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Group": [
+      0
+    ],
+    "Values": [
+      1
+    ]
+  },
+  "projectionActiveItems": {
+    "Group": [
+      {
+        "queryRef": "LoanUsedFor.Used For",
+        "suppressConcat": false
+      }
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Used For",
+        "Name": "LoanUsedFor.Used For",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Amount",
+        "Name": "Sum(LoanUsedFor.Amount)",
+        "Type": 1
+      }
+    ],
+    "Filters": [
+      {
+        "type": 7
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Group",
+          "Projection": 0,
+          "isActive": true
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Used For",
+      "queryName": "LoanUsedFor.Used For",
+      "roles": {
+        "Group": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "LoanUsedFor"
+            }
+          },
+          "Property": "Used For"
+        }
+      }
+    },
+    {
+      "displayName": "Amount",
+      "queryName": "Sum(LoanUsedFor.Amount)",
+      "roles": {
+        "Values": true
+      },
+      "sort": 2,
+      "sortOrder": 0,
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Aggregation": {
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "LoanUsedFor"
+                }
+              },
+              "Property": "Amount"
+            }
+          },
+          "Function": 0
+        }
+      }
+    }
+  ]
+}

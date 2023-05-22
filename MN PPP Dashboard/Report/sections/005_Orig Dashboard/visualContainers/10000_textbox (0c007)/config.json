@@ -1,0 +1,73 @@
+{
+  "name": "0c007fecceacb354334f",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1014.0958788898233,
+        "y": 129.26072326612388,
+        "z": 0,
+        "width": 116.26576955424726,
+        "height": 71.051303616484432,
+        "tabOrder": 10000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "% of "
+                  },
+                  {
+                    "value": "Rural ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#4c5d8a"
+                    }
+                  },
+                  {
+                    "value": "vs. "
+                  },
+                  {
+                    "value": "Urban ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#73b761"
+                    }
+                  },
+                  {
+                    "value": "loans issued"
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

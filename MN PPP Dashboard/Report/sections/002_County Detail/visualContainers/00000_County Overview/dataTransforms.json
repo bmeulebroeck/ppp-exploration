@@ -1,0 +1,447 @@
+{
+  "objects": {
+    "columnFormatting": [
+      {
+        "properties": {
+          "styleTotal": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Key Measures.Total $ per County"
+        }
+      }
+    ],
+    "total": [
+      {
+        "properties": {
+          "totals": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "10D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "10D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      5,
+      0,
+      8,
+      9,
+      2,
+      1,
+      3,
+      4,
+      6,
+      7
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Total Loan $",
+        "Name": "Key Measures.Total $ per County",
+        "Type": 1,
+        "Format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+      },
+      {
+        "Restatement": "$ per Capita",
+        "Name": "Key Measures.$ per Capita",
+        "Type": 1,
+        "Format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+      },
+      {
+        "Restatement": "Population",
+        "Name": "mn_county_pop_acs20.Population",
+        "Type": 3,
+        "Format": "0"
+      },
+      {
+        "Restatement": "Jobs Impacted",
+        "Name": "Sum(DemographicStats.JobsReported)",
+        "Type": 3,
+        "Format": "0"
+      },
+      {
+        "Restatement": "$ per job",
+        "Name": "Key Measures.$ per job",
+        "Type": 1,
+        "Format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+      },
+      {
+        "Restatement": "County",
+        "Name": "mn_county_pop_acs20.County",
+        "Type": 2048,
+        "DataCategory": 6
+      },
+      {
+        "Restatement": "2019 GDP",
+        "Name": "Sum(mn_gdp_county_2019.2019_Total)",
+        "Type": 3,
+        "Format": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############"
+      },
+      {
+        "Restatement": "Loan$ as % of 2019 GDP",
+        "Name": "Key Measures.Loan$ as % of 2019 GDP",
+        "Type": 1,
+        "Format": "0.00%;-0.00%;0.00%"
+      },
+      {
+        "Restatement": "# of Loans",
+        "Name": "All MN PPP Loans.LoanNumber",
+        "Type": 3
+      },
+      {
+        "Restatement": "Avg Loan Amount",
+        "Name": "Key Measures.Avg Loan Amount",
+        "Type": 1,
+        "Format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+      }
+    ],
+    "Filters": [
+      {
+        "type": 7
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Key Measures"
+              }
+            },
+            "Property": "Loan $ % of 2019 GDP"
+          }
+        }
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 5,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 8,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 9,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 6,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 7,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Total Loan $",
+      "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+      "queryName": "Key Measures.Total $ per County",
+      "roles": {
+        "Values": true
+      },
+      "sort": 2,
+      "sortOrder": 0,
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Key Measures"
+            }
+          },
+          "Property": "Total $ per County"
+        }
+      }
+    },
+    {
+      "displayName": "$ per Capita",
+      "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+      "queryName": "Key Measures.$ per Capita",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Key Measures"
+            }
+          },
+          "Property": "$ per Capita"
+        }
+      }
+    },
+    {
+      "displayName": "Population",
+      "format": "0",
+      "queryName": "mn_county_pop_acs20.Population",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "mn_county_pop_acs20"
+            }
+          },
+          "Property": "Population"
+        }
+      }
+    },
+    {
+      "displayName": "Jobs Impacted",
+      "format": "0",
+      "queryName": "Sum(DemographicStats.JobsReported)",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Aggregation": {
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "DemographicStats"
+                }
+              },
+              "Property": "JobsReported"
+            }
+          },
+          "Function": 0
+        }
+      }
+    },
+    {
+      "displayName": "$ per job",
+      "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+      "queryName": "Key Measures.$ per job",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Key Measures"
+            }
+          },
+          "Property": "$ per job"
+        }
+      }
+    },
+    {
+      "displayName": "County",
+      "queryName": "mn_county_pop_acs20.County",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": "County",
+        "underlyingType": 6816769
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "mn_county_pop_acs20"
+            }
+          },
+          "Property": "County"
+        }
+      }
+    },
+    {
+      "displayName": "2019 GDP",
+      "format": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+      "queryName": "Sum(mn_gdp_county_2019.2019_Total)",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Aggregation": {
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "mn_gdp_county_2019"
+                }
+              },
+              "Property": "2019_Total"
+            }
+          },
+          "Function": 0
+        }
+      }
+    },
+    {
+      "displayName": "Loan$ as % of 2019 GDP",
+      "format": "0.00%;-0.00%;0.00%",
+      "queryName": "Key Measures.Loan$ as % of 2019 GDP",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Key Measures"
+            }
+          },
+          "Property": "Loan$ as % of 2019 GDP"
+        }
+      }
+    },
+    {
+      "displayName": "# of Loans",
+      "queryName": "All MN PPP Loans.LoanNumber",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Aggregation": {
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "All MN PPP Loans"
+                }
+              },
+              "Property": "LoanNumber"
+            }
+          },
+          "Function": 5
+        }
+      }
+    },
+    {
+      "displayName": "Avg Loan Amount",
+      "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+      "queryName": "Key Measures.Avg Loan Amount",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Key Measures"
+            }
+          },
+          "Property": "Avg Loan Amount"
+        }
+      }
+    }
+  ]
+}

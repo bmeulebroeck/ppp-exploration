@@ -1,0 +1,95 @@
+{
+  "id": 0,
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "ReportSection",
+      "config": "{}",
+      "name": "Pod",
+      "parameters": "[{\"name\":\"Param_Filterf1673df87166b5514c85\",\"boundFilter\":\"Filterf1673df87166b5514c85\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"mn_county_pop_acs20\"}},\"Property\":\"County\"}}},{\"name\":\"Param_Filter4aa6445ed9a15ee7e019\",\"boundFilter\":\"Filter4aa6445ed9a15ee7e019\",\"fieldExpr\":{\"GroupRef\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"2017_6-digit_industries (2)\"}},\"Property\":\"2017 NAICS Code (groups)\",\"GroupedColumns\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"2017_6-digit_industries (2)\"}},\"Property\":\"2017 NAICS Code\"}}]}}}]",
+      "type": 1
+    },
+    {
+      "boundSection": "ReportSection03a1c966b936b617a560",
+      "config": "{}",
+      "name": "Pod1",
+      "parameters": "[{\"name\":\"Param_Filter052a306dedb8b825733c\",\"boundFilter\":\"Filter052a306dedb8b825733c\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"mn_county_pop_acs20\"}},\"Property\":\"County\"}}}]",
+      "referenceScope": 1,
+      "type": 1
+    },
+    {
+      "boundSection": "ReportSectiona099853e00787086dfb1",
+      "config": "{}",
+      "name": "Pod2",
+      "parameters": "[{\"name\":\"Param_Filter61e76be869c5b9099ce0\",\"boundFilter\":\"Filter61e76be869c5b9099ce0\",\"fieldExpr\":{\"GroupRef\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"2017_6-digit_industries (2)\"}},\"Property\":\"2017 NAICS Code (groups)\",\"GroupedColumns\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"2017_6-digit_industries (2)\"}},\"Property\":\"2017 NAICS Code\"}}]}}}]",
+      "type": 1
+    },
+    {
+      "boundSection": "ReportSection3fa89b8010757a1070a3",
+      "config": "{}",
+      "name": "Pod4",
+      "parameters": "[{\"name\":\"Param_Filterf1673df87166b5514c85\",\"boundFilter\":\"Filterf1673df87166b5514c85\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"mn_county_pop_acs20\"}},\"Property\":\"County\"}}},{\"name\":\"Param_Filter4aa6445ed9a15ee7e019\",\"boundFilter\":\"Filter4aa6445ed9a15ee7e019\",\"fieldExpr\":{\"GroupRef\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"2017_6-digit_industries (2)\"}},\"Property\":\"2017 NAICS Code (groups)\",\"GroupedColumns\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"2017_6-digit_industries (2)\"}},\"Property\":\"2017 NAICS Code\"}}]}}}]",
+      "type": 1
+    }
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY18SU07",
+            "path": "BaseThemes/CY18SU07.json",
+            "type": 202
+          },
+          {
+            "name": "CityPark",
+            "path": "BuiltInThemes/CityPark.json",
+            "type": 201
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "PBI_CV_815282F9_27F5_4950_9430_E910E0A8DB6A.pbiviz.json",
+            "path": "PBI_CV_815282F9_27F5_4950_9430_E910E0A8DB6A.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "PBI_CV_815282F9_27F5_4950_9430_E910E0A8DB6A",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "bg_nav_simple312069547876628.png",
+            "path": "bg_nav_simple312069547876628.png",
+            "type": 100
+          },
+          {
+            "name": "bg_nav_simple4991855496088644.png",
+            "path": "bg_nav_simple4991855496088644.png",
+            "type": 100
+          },
+          {
+            "name": "bg_nav_simple18368844872597867.png",
+            "path": "bg_nav_simple18368844872597867.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "theme": "CityPark"
+}

@@ -1,0 +1,66 @@
+{
+  "name": "2062ba23239cc13cb6d7",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 835.88152327221428,
+        "y": 8.1241184767277854,
+        "z": 3000,
+        "width": 204.9083215796897,
+        "height": 78.533145275035253,
+        "tabOrder": 3000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "card",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Key Measures.Loan$ as % of 2019 GDP"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "k",
+          "Entity": "Key Measures",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "Loan$ as % of 2019 GDP"
+          },
+          "Name": "Key Measures.Loan$ as % of 2019 GDP"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "k"
+                }
+              },
+              "Property": "Loan$ as % of 2019 GDP"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

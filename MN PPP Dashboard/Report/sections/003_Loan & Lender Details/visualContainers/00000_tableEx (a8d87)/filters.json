@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Filter3037342e614a251b4551",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "LenderInfo"
+          }
+        },
+        "Property": "ServicingLenderName"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "isInvertedSelectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "isHiddenInViewMode": false
+  },
+  {
+    "name": "Filter175513d70908dd803e11",
+    "expression": {
+      "GroupRef": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "2017_6-digit_industries (2)"
+          }
+        },
+        "Property": "2017 NAICS Code (groups)",
+        "GroupedColumns": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "2017_6-digit_industries (2)"
+                }
+              },
+              "Property": "2017 NAICS Code"
+            }
+          }
+        ]
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "isInvertedSelectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "isHiddenInViewMode": false
+  }
+]

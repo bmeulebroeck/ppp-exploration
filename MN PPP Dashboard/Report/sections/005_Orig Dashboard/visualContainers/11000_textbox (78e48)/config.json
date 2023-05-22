@@ -1,0 +1,37 @@
+{
+  "name": "78e48f3848c4e9bb7391",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 0,
+        "y": 691.13540790580316,
+        "z": 11000,
+        "width": 945.19764507989908,
+        "height": 30.142977291841884,
+        "tabOrder": 11000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Data Sources: https://data.sba.gov/dataset/ppp-foia (U.S. Small Business Administration, April 2021); population from U.S. census bureau 2020 ACS estimates"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

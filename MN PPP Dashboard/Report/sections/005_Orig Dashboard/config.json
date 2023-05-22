@@ -1,0 +1,107 @@
+{
+  "relationships": [
+    {
+      "source": "318ebebef266df9b6f04",
+      "target": "bc54786e84b1386f56d8",
+      "type": 1
+    },
+    {
+      "source": "318ebebef266df9b6f04",
+      "target": "e3603b9a69b9e58a679a",
+      "type": 1
+    },
+    {
+      "source": "318ebebef266df9b6f04",
+      "target": "e701b3d817bf90d826b8",
+      "type": 1
+    },
+    {
+      "source": "bc54786e84b1386f56d8",
+      "target": "8f0cfbbf20978400bec0",
+      "type": 3
+    },
+    {
+      "source": "bc54786e84b1386f56d8",
+      "target": "1f876b4e3482c4f1b282",
+      "type": 3
+    },
+    {
+      "source": "bc54786e84b1386f56d8",
+      "target": "6a8915cea0728d20a616",
+      "type": 3
+    },
+    {
+      "source": "bc54786e84b1386f56d8",
+      "target": "e701b3d817bf90d826b8",
+      "type": 3
+    },
+    {
+      "source": "bc54786e84b1386f56d8",
+      "target": "318ebebef266df9b6f04",
+      "type": 3
+    },
+    {
+      "source": "bc54786e84b1386f56d8",
+      "target": "5429e8f0add2705bfd6a",
+      "type": 3
+    },
+    {
+      "source": "bc54786e84b1386f56d8",
+      "target": "af4b2adba74fe90d702f",
+      "type": 3
+    },
+    {
+      "source": "e3603b9a69b9e58a679a",
+      "target": "5429e8f0add2705bfd6a",
+      "type": 1
+    },
+    {
+      "source": "e3603b9a69b9e58a679a",
+      "target": "af4b2adba74fe90d702f",
+      "type": 1
+    },
+    {
+      "source": "e3603b9a69b9e58a679a",
+      "target": "6a8915cea0728d20a616",
+      "type": 1
+    },
+    {
+      "source": "e3603b9a69b9e58a679a",
+      "target": "e701b3d817bf90d826b8",
+      "type": 1
+    },
+    {
+      "source": "e3603b9a69b9e58a679a",
+      "target": "bc54786e84b1386f56d8",
+      "type": 1
+    }
+  ],
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 6,
+                    "Percent": 0.6
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "55D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": 1
+}

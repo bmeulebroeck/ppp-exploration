@@ -1,0 +1,71 @@
+{
+  "name": "48fbdb307cbb9ab85d80",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 822.3413258110013,
+        "y": 0,
+        "z": 2000,
+        "width": 306.91114245416077,
+        "height": 69.506346967559935,
+        "tabOrder": 2000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "slicer",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "LenderInfo.ProjectCity",
+          "active": true
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "l",
+          "Entity": "LenderInfo",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "l"
+              }
+            },
+            "Property": "ProjectCity"
+          },
+          "Name": "LenderInfo.ProjectCity"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    }
+  }
+}

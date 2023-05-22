@@ -1,0 +1,88 @@
+{
+  "displayName": "Decomp Tree View",
+  "name": "Bookmark24148b20808eae4e4653",
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSectiona099853e00787086dfb1",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "Filterb071b2b9d80e8dec3c69",
+          "type": "Advanced",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "l",
+                "Entity": "LenderInfo",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "l"
+                          }
+                        },
+                        "Property": "UndisbursedAmount"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "0L"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "LenderInfo"
+                }
+              },
+              "Property": "UndisbursedAmount"
+            }
+          },
+          "howCreated": 1
+        }
+      ]
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "options": {
+    "targetVisualNames": [
+      "dad10443d26e94d9fd6a",
+      "f69ec848e3605b652660",
+      "5a8a772a951a602bd353",
+      "46339d8830ab72ac0d78"
+    ],
+    "suppressData": true,
+    "applyOnlyToTargetVisuals": true
+  }
+}

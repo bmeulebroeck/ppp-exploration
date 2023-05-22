@@ -1,0 +1,90 @@
+table 'Key Measures'
+	lineageTag: 5f8ecde0-3940-4de6-afc3-bcb4a991bb76
+	ordinal: 9
+
+	partition 'Key Measures-ceb5bb18-c2ce-4cff-961d-e9b2862092a1' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+			    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+			in
+			    #"Removed Columns"
+
+	measure 'Total $ per County' =
+		
+		VAR county = SELECTEDVALUE('mn_county_pop_acs20'[County])
+		RETURN
+		    CALCULATE(
+		        SUM( 'All MN PPP Loans'[CurrentApprovalAmount]),
+		        FILTER( 'mn_county_pop_acs20', 'mn_county_pop_acs20'[County] = county )
+		    )
+		formatString:= \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 73ec74f2-87b4-48ac-a804-ef33cb42512f
+
+	measure '$ per Capita' =
+		
+		VAR countyPop = SELECTEDVALUE('mn_county_pop_acs20'[Population]) 
+		RETURN
+		    CALCULATE(DIVIDE('Key Measures'[Total $ per County], countyPop, 0))
+		formatString:= \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: cae2c791-c093-4621-a632-a80eb2b57579
+
+	measure 'CurrApp $ (Millions)' = (SUM('All MN PPP Loans'[CurrentApprovalAmount]))/1000000
+		lineageTag: f767b48d-79ec-4b50-ac00-903a658095b0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '$ alloc to payroll' =
+		
+		    CALCULATE(
+		        SUM( 'All MN PPP Loans'[CurrentApprovalAmount]),
+		        FILTER( 'LoanUsedFor', 'LoanUsedFor'[Used For] = "payroll" )
+		    )
+		formatString:= \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 4d6362c3-2610-4cb2-95e9-0c35d2c4681d
+
+	measure '$ per job' = [$ alloc to payroll] / (SUM('DemographicStats'[JobsReported]))
+		formatString:= \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7554d9de-946d-47a8-8fdb-ed826b331029
+
+	measure 'Female %' =
+		
+		DIVIDE (
+		    CALCULATE (
+		        COUNT ( 'All MN PPP Loans'[LoanNumber] ),
+		        'DemographicStats'[Gender] = "Female Owned"
+		    ),
+		        COUNT ( 'All MN PPP Loans'[LoanNumber] ), ""
+		)
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: dd3dd4f0-c788-4485-81de-fd6ea206ceef
+
+	measure 'Veteran %' =
+		
+		DIVIDE (
+		    CALCULATE (
+		        COUNT ( 'All MN PPP Loans'[LoanNumber] ),
+		        'DemographicStats'[Veteran] = "Veteran"
+		    ),
+		        COUNT ( 'All MN PPP Loans'[LoanNumber] ), ""
+		)
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: 7c06e4c2-461f-4e80-b2a3-0337c1c18f7f
+
+	measure 'Loan$ as % of 2019 GDP' =
+		
+		DIVIDE(
+		    SUM('All MN PPP Loans'[CurrentApprovalAmount]),
+			SUM('mn_gdp_county_2019'[2019_Total]), ""
+		)
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: 271d45b6-3c01-4822-9bff-2c03fd5f74e2
+
+	measure 'Avg Loan Amount' = Average('All MN PPP Loans'[CurrentApprovalAmount])
+		formatString:= \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a15ba0d5-efae-49f0-8880-7ab2d916055c
+
+	annotation PBI_ResultType = Table
+

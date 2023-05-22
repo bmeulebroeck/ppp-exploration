@@ -1,0 +1,93 @@
+{
+  "name": "f223e09544438c0a1a38",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 644.20745069393718,
+        "y": 494.60920379839297,
+        "z": 5000,
+        "width": 635.79254930606282,
+        "height": 225.33235938641343,
+        "tabOrder": 5000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "clusteredBarChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "LenderInfo.OriginatingLender",
+          "active": true
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "Sum(LenderInfo.CurrentApprovalAmount)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "l",
+          "Entity": "LenderInfo",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "l"
+              }
+            },
+            "Property": "OriginatingLender"
+          },
+          "Name": "LenderInfo.OriginatingLender"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "l"
+                  }
+                },
+                "Property": "CurrentApprovalAmount"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(LenderInfo.CurrentApprovalAmount)"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "l"
+                    }
+                  },
+                  "Property": "CurrentApprovalAmount"
+                }
+              },
+              "Function": 0
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

@@ -1,0 +1,247 @@
+table LenderInfo
+	lineageTag: a3626a7f-de5a-4448-813c-786af5d2bd0b
+	ordinal: 11
+
+	partition 'LenderInfo-96e52558-be2b-4aff-9c7a-93daf314e2b7' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Table.Combine({upto150k_mn, over150k_mn}),
+			    #"Removed Other Columns" = Table.SelectColumns(Source,{"LoanNumber", "DateApproved", "BorrowerName", "BorrowerAddress", "BorrowerCity", "BorrowerState", "BorrowerZip", "LoanStatus", "CurrentApprovalAmount", "UndisbursedAmount", "ServicingLenderLocationID", "ServicingLenderName", "ServicingLenderAddress", "ServicingLenderCity", "ServicingLenderState", "ServicingLenderZip", "ProjectCity", "ProjectCountyName", "ProjectState", "ProjectZip", "OriginatingLenderLocationID", "OriginatingLender", "OriginatingLenderCity", "OriginatingLenderState"})
+			in
+			    #"Removed Other Columns"
+
+	column LoanNumber
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 62e9e650-0a89-41d1-8f65-ce4c32943ef9
+		sourceColumn: LoanNumber
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = DataType
+
+	column DateApproved
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: e66bc36a-373d-4d68-b9b1-70764da62528
+		sourceColumn: DateApproved
+		summarizeBy: None
+
+		variation Variation
+			defaultHierarchy: 'LocalDateTable_774085ee-426d-4759-9987-9aa891ce6746'.'Date Hierarchy'
+			isDefault
+			relationship: 'f1970521-6c35-4917-b21d-36aa72d3aacd'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column BorrowerName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b98437ea-cb3f-4710-8070-c566ffb0609b
+		sourceColumn: BorrowerName
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column BorrowerAddress
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9f462d40-2ced-4fe6-954d-ce628a584414
+		sourceColumn: BorrowerAddress
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column BorrowerCity
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ffb1d464-1c13-43c2-9322-1c3b97272ab3
+		sourceColumn: BorrowerCity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column BorrowerState
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 35a5f60e-ab0b-4dbc-a22d-dc79df801a9a
+		sourceColumn: BorrowerState
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column BorrowerZip
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: af1d90fc-f8d4-42c8-a878-4eb6d64950ff
+		sourceColumn: BorrowerZip
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoanStatus
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bbbfd885-9f25-4419-b604-84d5ec347c8c
+		sourceColumn: LoanStatus
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrentApprovalAmount
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: b9877ea9-d06d-4b21-a796-cbe6072f6d18
+		sourceColumn: CurrentApprovalAmount
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UndisbursedAmount
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 0834fa48-d681-492c-b83b-1581a5c12574
+		sourceColumn: UndisbursedAmount
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ServicingLenderLocationID
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 6e2eec3d-740d-4b0d-ba35-99ac05f00876
+		sourceColumn: ServicingLenderLocationID
+		summarizeBy: Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServicingLenderName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 798040bd-fb2e-4f4a-bab2-01e9514ffc5a
+		sourceColumn: ServicingLenderName
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServicingLenderAddress
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e39dd153-4bdb-4b41-822d-57a911a4eab3
+		sourceColumn: ServicingLenderAddress
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServicingLenderCity
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fc705b83-4bbe-428d-8b08-695166f59391
+		sourceColumn: ServicingLenderCity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServicingLenderState
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ab611f55-7b6c-4aa8-9488-38c7839d122d
+		sourceColumn: ServicingLenderState
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServicingLenderZip
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: da5277bf-5315-4561-b0c7-4a7a95f68d66
+		sourceColumn: ServicingLenderZip
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectCity
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9d1d3a3a-c982-489a-b3f6-630fa6a1f0bf
+		sourceColumn: ProjectCity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectCountyName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3011c974-c977-427f-89b3-341f3f87b273
+		sourceColumn: ProjectCountyName
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectState
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fee5d0e2-dd47-412a-8725-741d8a66cabe
+		sourceColumn: ProjectState
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectZip
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 1cb9c378-3de7-4552-a8ea-123d9f201a15
+		sourceColumn: ProjectZip
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginatingLenderLocationID
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: decb06b0-7359-48dd-9e44-ba32105514b8
+		sourceColumn: OriginatingLenderLocationID
+		summarizeBy: Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginatingLender
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e6f843be-5b1f-492b-8f2e-253175b2bf50
+		sourceColumn: OriginatingLender
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginatingLenderCity
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: cfd08f09-8db3-4f02-9c4a-21295a3e0e88
+		sourceColumn: OriginatingLenderCity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginatingLenderState
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 701a388a-a934-49d3-af61-985e4cce7ca0
+		sourceColumn: OriginatingLenderState
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
