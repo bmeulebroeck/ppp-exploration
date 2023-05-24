@@ -1,0 +1,66 @@
+{
+  "name": "78bac03ed55046eacbb3",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 608.156972669937,
+        "y": 115.71128241065172,
+        "z": 5001,
+        "width": 198.23405746320955,
+        "height": 101.35949544498949
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "card",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Key Measures.LoanCount"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "k",
+          "Entity": "Key Measures",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "LoanCount"
+          },
+          "Name": "Key Measures.LoanCount",
+          "NativeReferenceName": "LoanCount"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "k"
+                }
+              },
+              "Property": "LoanCount"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

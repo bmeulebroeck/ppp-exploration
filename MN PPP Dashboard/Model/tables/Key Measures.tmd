@@ -86,5 +86,9 @@ table 'Key Measures'
 		formatString:= \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: a15ba0d5-efae-49f0-8880-7ab2d916055c
 
+	measure LoanCount = COUNTROWS('All MN PPP Loans')
+		formatString:= 0
+		lineageTag: d283027a-cb67-48e2-965d-539ceda628b9
+
 	annotation PBI_ResultType = Table
 
